@@ -37,6 +37,9 @@ optional = true
 version = "0.8"
 default-features = false
 
+[dependencies.defmt]
+version = "0.3.2"
+
 [features]
 default = ["std"]
 std = ["num-traits/std"]

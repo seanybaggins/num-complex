@@ -36,6 +36,8 @@ use num_traits::float::FloatCore;
 #[cfg(any(feature = "std", feature = "libm"))]
 use num_traits::float::{Float, FloatConst};
 
+use defmt::{Format, Formatter};
+
 mod cast;
 mod pow;
 
@@ -94,6 +96,13 @@ impl<T> Complex<T> {
     #[inline]
     pub const fn new(re: T, im: T) -> Self {
         Complex { re, im }
+    }
+}
+
+impl<T> Format for Complex<T> 
+where T: Format {
+    fn format(&self, fmt: Formatter) {
+        defmt::write!(fmt, "{}+{}j", self.re, self.im);
     }
 }
 
