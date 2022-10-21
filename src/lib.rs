@@ -102,7 +102,7 @@ impl<T> Complex<T> {
 impl<T> Format for Complex<T> 
 where T: Format {
     fn format(&self, fmt: Formatter) {
-        defmt::write!(fmt, "{}+{}j", self.re, self.im);
+        defmt::write!(fmt, "{}+({})j", self.re, self.im);
     }
 }
 
